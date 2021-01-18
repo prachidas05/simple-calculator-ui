@@ -1,4 +1,4 @@
-# Recipe SimpleCalculator App
+# Simple Calculator App
 
 Simple Calculator UI
 

@@ -11,20 +11,20 @@
     <div class="clbody">
       <button class="btn op" id="clear" value="AC" ng-click="mainController.clearAll()">AC</button>
       <button class="btn op" id="ce" value="CE" ng-click="mainController.clearOne()">CE</button>
-     <button class="btn ope" value="%" ng-click="mainController.operation('%')">%</button>
-      <button class="btn ope" value="/" ng-click="mainController.operation('/')">/</button>
+     <button class="btn ope" value="%" ng-click="mainController.calculate('%')">%</button>
+      <button class="btn ope" value="/" ng-click="mainController.calculate('/')">/</button>
       <button class="btn num" value=7 ng-click="mainController.operation(7)">7</button>
       <button class="btn num" value=8 ng-click="mainController.operation(8)">8</button>
       <button class="btn num" value=9 ng-click="mainController.operation(9)">9</button>
-      <button class="btn ope" value=* ng-click="mainController.operation('*')">*</button>
+      <button class="btn ope" value=* ng-click="mainController.calculate('*')">*</button>
       <button class="btn num" value=4 ng-click="mainController.operation(4)">4</button>
       <button class="btn num" value=5 ng-click="mainController.operation(5)">5</button>
       <button class="btn num" value=6 ng-click="mainController.operation(6)">6</button>
-      <button class="btn ope" ng-click="mainController.operation('-')">-</button>
+      <button class="btn ope" ng-click="mainController.calculate('-')">-</button>
       <button class="btn num" value=1 ng-click="mainController.operation(1)">1</button>
       <button class="btn num" value=2 ng-click="mainController.operation(2)">2</button>
       <button class="btn num" value=3 ng-click="mainController.operation(3)">3</button>
-      <button class="btn ope" ng-click="mainController.operation('+')">+</button>
+      <button class="btn ope" ng-click="mainController.calculate('+')">+</button>
       <button class="btn" ng-click="mainController.operation('.')">.</button>
       <button class="btn num" value=0 ng-click="mainController.operation(0)">0</button>
       <button class="btn" ng-click="mainController.showHistory()">History</button>

@@ -2,7 +2,7 @@
 
 var calcResponse = {
   "result": "30",
-  "history": ["10+20+30=60", "10-5=5", "9*9+9=90"]
+  "history": ["10+20=30", "10-5=5", "9*9=81"]
 };
 
 var firstResponse = {
@@ -11,7 +11,7 @@ var firstResponse = {
 };
 
 var historyResponse = {
-  "history": ["10+20+30=60", "10-5=5", "9*9+9=90"]
+  "history": ["10+20=30", "10-5=5", "9*9=81"]
 };
 
 angular.module('calculatorAppMock', ['ngMockE2E']).run(function ($httpBackend) {

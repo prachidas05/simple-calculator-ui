@@ -10,7 +10,7 @@
 angular.module('calculatorApp')
   .controller('MainCtrl', ['$http', function ($http) {
     //externilize this property in prod code
-    const SERVER_URL = 'http://localhost:8080';
+    const SERVER_URL = 'http://localhost:8080/simplecalculatorapi';
     let vm = this;
 
     function setDefault() {
@@ -24,9 +24,19 @@ angular.module('calculatorApp')
       vm.input = vm.input === '0' ? val : '' + vm.input + val;
     };
 
-    function getOperationLabel(operator) {
+    function getOperationLabel(strInput) {
       let label;
-      switch (operator) {
+
+      if(strInput.includes("+")){
+        label = 'add';
+      }else if(strInput.includes("-")){
+        label = 'subtract';
+      }else if(strInput.includes("*")){
+        label = 'multiply';
+      }else if(strInput.includes("/")){
+        label = 'division';
+      }
+      /*switch (strInput) {
         case "+":
           label = 'add';
           break;
@@ -42,12 +52,14 @@ angular.module('calculatorApp')
         default:
           label = 'modulo';
           break;
-      }
+      }*/
       return label;
     }
 
     function getNumbers(strInput) {
       let split = strInput.trim().split(/(\d+)/);
+      //let split = strInput.trim().split("(?<=[\\\\d.])(?=[^\\\\d.])|(?<=[^\\\\d.])(?=[\\\\d.])");
+
       let nums = [];
       split.forEach(function (item) {
         if (item && !isNaN(item)) {
@@ -57,22 +69,22 @@ angular.module('calculatorApp')
       return nums;
     }
 
-    vm.calculate = function (operator) {
-      if (operator) {
-        vm.input = vm.input + operator;
+    vm.calculate = function () {
+      //if (operator) {
+        //vm.input = vm.input + operator;
         let strInput = vm.input.toString();
-        if (strInput.substring(0, strInput.length - 1) !== operator) {
+        //if (strInput.substring(0, strInput.length - 1) !== operator) {
           let nums = getNumbers(strInput);
           let secondNum = nums[1] ? nums[1] : '0';
-          $http.get(SERVER_URL + '/calculator?firstNum=' + nums[0] + "&secondNum=" + secondNum + "&operation=" + getOperationLabel(operator)).then(function (response) {
+          $http.get(SERVER_URL + '/calculator?firstNum=' + nums[0] + "&secondNum=" + secondNum + "&operation=" + getOperationLabel(strInput)).then(function (response) {
             vm.input = vm.result ? response.data.result : vm.input;
             vm.result = response.data.result;
             vm.history = response.data.history;
           }).catch(function (error) {
             console.log('error occured while calling calculator service', error);
           });
-        }
-      }
+       // }
+     // }
     };
 
     vm.showHistory = function () {
